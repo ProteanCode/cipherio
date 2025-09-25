@@ -2,13 +2,12 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-$token = 'AZ';
-$shift = 1;
+$token = 'Hello';
 
-echo "At bash original: " . $token . PHP_EOL;
+echo "Bacon original: " . $token . PHP_EOL;
 
-$encrypted = atbash_encrypt($token);
-$decrypted = atbash_decrypt($encrypted);
+$encrypted = bacon_encrypt($token);
+$decrypted = bacon_decrypt($encrypted);
 
-echo "Caesar encrypted: " . $encrypted . PHP_EOL;
-echo "Caesar decrypted: " . $decrypted . PHP_EOL;
+echo "Bacon encrypted: " . $encrypted . PHP_EOL;
+echo "Bacon decrypted: " . $decrypted . PHP_EOL;

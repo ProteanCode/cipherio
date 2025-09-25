@@ -6,4 +6,5 @@ enum CipherType
 {
     case CAESAR;
     case AT_BASH;
+    case BACON;
 }

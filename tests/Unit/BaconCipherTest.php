@@ -6,17 +6,19 @@ use ProteanCode\Cipherio\Enums\CipherType;
 use ProteanCode\Cipherio\Factories\CipherFactory;
 use ProteanCode\Cipherio\Tests\TestCase;
 
-class AtBashCipherTest extends TestCase
+class BaconCipherTest extends TestCase
 {
     /**
      * @dataProvider randomStringProvider
      */
     public function testThatDecryptedValueEqualsEncryptedValue(string $testToken)
     {
-        $encryptingCipher = CipherFactory::create(CipherType::AT_BASH, $testToken);
+        $testToken = strtoupper(preg_replace('/[^AB]/i', '', $testToken)); // remove invalid chars
+
+        $encryptingCipher = CipherFactory::create(CipherType::BACON, $testToken);
         $encrypted = $encryptingCipher->encrypt();
 
-        $decryptingCipher = CipherFactory::create(CipherType::AT_BASH, $encrypted);
+        $decryptingCipher = CipherFactory::create(CipherType::BACON, $encrypted);
         $decrypted = $decryptingCipher->decrypt();
 
         $this->assertEquals($testToken, $decrypted);
@@ -25,19 +27,16 @@ class AtBashCipherTest extends TestCase
     public function testEncryptDecryptFixedCases(): void
     {
         $cases = [
-            "Hello" => "Svool",
-            "World" => "Dliow",
-            "ABC"   => "ZYX",
-            "xyz"   => "cba",
-            "Atbash Cipher!" => "Zgyzhs Xrksvi!",
-            "12345" => "12345", // numbers unchanged
+            "A" => "AAAAA",
+            "B" => "AAAAB",
+            "AB" => "AAAAAAAAAB",
         ];
 
         foreach ($cases as $original => $expectedEncrypted) {
-            $encryptingCipher = CipherFactory::create(CipherType::AT_BASH, $original);
+            $encryptingCipher = CipherFactory::create(CipherType::BACON, $original);
             $encrypted = $encryptingCipher->encrypt();
 
-            $decryptingCipher = CipherFactory::create(CipherType::AT_BASH, $expectedEncrypted);
+            $decryptingCipher = CipherFactory::create(CipherType::BACON, $expectedEncrypted);
             $decrypted = $decryptingCipher->decrypt();
 
             $this->assertSame($expectedEncrypted, $encrypted, "Encryption failed for '$original'");

@@ -38,3 +38,22 @@ if (!function_exists('atbash_decrypt')) {
         return $cipher->decrypt();
     }
 }
+
+
+if (!function_exists('bacon_encrypt')) {
+    function bacon_encrypt(string $token): string
+    {
+        $cipher = CipherFactory::create(CipherType::BACON, $token);
+
+        return $cipher->encrypt();
+    }
+}
+
+if (!function_exists('bacon_decrypt')) {
+    function bacon_decrypt(string $token): string
+    {
+        $cipher = CipherFactory::create(CipherType::BACON, $token);
+
+        return $cipher->decrypt();
+    }
+}
