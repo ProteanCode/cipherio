@@ -5,4 +5,5 @@ namespace ProteanCode\Cipherio\Enums;
 enum CipherType
 {
     case CAESAR;
+    case AT_BASH;
 }

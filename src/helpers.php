@@ -20,3 +20,21 @@ if (!function_exists('caesar_decrypt')) {
         return $cipher->decrypt();
     }
 }
+
+if (!function_exists('atbash_encrypt')) {
+    function atbash_encrypt(string $token): string
+    {
+        $cipher = CipherFactory::create(CipherType::AT_BASH, $token);
+
+        return $cipher->encrypt();
+    }
+}
+
+if (!function_exists('atbash_decrypt')) {
+    function atbash_decrypt(string $token): string
+    {
+        $cipher = CipherFactory::create(CipherType::AT_BASH, $token);
+
+        return $cipher->decrypt();
+    }
+}

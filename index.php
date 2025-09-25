@@ -2,13 +2,13 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-$token = 'hello';
+$token = 'AZ';
 $shift = 1;
 
-echo "Caesar original: " . $token . PHP_EOL;
+echo "At bash original: " . $token . PHP_EOL;
 
-$encrypted = caesar_encrypt($token, $shift);
-$decrypted = caesar_decrypt($encrypted, $shift);
+$encrypted = atbash_encrypt($token);
+$decrypted = atbash_decrypt($encrypted);
 
 echo "Caesar encrypted: " . $encrypted . PHP_EOL;
 echo "Caesar decrypted: " . $decrypted . PHP_EOL;
